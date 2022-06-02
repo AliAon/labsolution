@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class patients extends Controller
 {
@@ -19,6 +20,8 @@ class patients extends Controller
     public $spcial;
     public $routine;
     public $status;
+
+   
 
     //add patient
     public function add_patient(){
@@ -45,9 +48,10 @@ class patients extends Controller
 
     }
     //filters
-    public function by_name(){
-
-
+    public function by_name($name){
+        $patient = DB::table('patients')->where('name', $name)->get();
+        return $patient;
+    
     }
     public function by_phone_number(){
 

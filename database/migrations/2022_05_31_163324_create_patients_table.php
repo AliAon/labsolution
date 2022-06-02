@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('test_list');
             $table->string('ref_doctor');
             $table->string('CNIC');
-            $table->date('degistor_date');
+            $table->date('registor_date');
             $table->string('routine');
             $table->string('special');$table->timestamps();
 

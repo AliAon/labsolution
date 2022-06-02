@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Middleware\auth;
+use App\Http\Controllers\user;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,30 +18,41 @@ Route::get('/', function () {
     return view('index');
 });
 
+
+Route::post('/login',[user::class,'login_user'])->name('login');
+
+Route::get('/logout_user',[user::class,'logout_user'])->name('/logout_user');
+
 Route::get('/user', function () {
     return view('users.UserDashboard');
-});
+})->middleware('auth');
 Route::get('/user/samplerecipent', function () {
     return view('users.SampleRecipent');
-});
+})->middleware('auth');
 Route::get('/user/viewreport', function () {
     return view('users.ViewReport');
-});
+})->middleware('auth');
 Route::get('/user/expence', function () {
     return view('users.Expence');
-});
+})->middleware('auth');
 Route::get('/user/statement', function () {
     return view('users.Statements');
-});
+})->middleware('auth');
 Route::get('/user/test', function () {
     return view('users.Tests');
-});
+})->middleware('auth');
+
 Route::get('/user/searchdeus', function () {
     return view('users.SearchDeues');
-});
+})->middleware('auth');
+
+// searchbyname
+Route::post('/user/searchdeus', [user::class,'search_patient']);
+
 Route::get('/user/doctors', function () {
     return view('users.Doctors');
-});
+})->middleware('auth');
+
 //admin
 Route::get('/user/admin', function () {
     return view('admin.AdminDashboard');
