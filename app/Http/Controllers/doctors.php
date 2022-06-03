@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 
@@ -28,5 +29,10 @@ class doctors extends Controller
         
 
 
+    }
+    public function by_name($name){
+        $doctor = DB::table('doctors')->where('name', $name)->get();
+        return $doctor;
+    
     }
 }

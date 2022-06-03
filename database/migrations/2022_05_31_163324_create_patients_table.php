@@ -16,20 +16,25 @@ return new class extends Migration
         Schema::create('patients', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('f_name');
             $table->integer('age');
+            $table->string('gender');
+            $table->string('email');
             $table->integer('report_id');
             $table->integer('phone_number');
-            $table->decimal('discount', $precision = 8, $scale = 2);
+            $table->string('discount');
             $table->string('loctaion');
             $table->string('test_list');
+            $table->integer('lab_no');
             $table->string('ref_doctor');
             $table->string('CNIC');
             $table->date('registor_date');
-            $table->string('routine');
-            $table->string('special');$table->timestamps();
+            $table->string('specialorroutine');
+            $table->timestamps();
 
         });
     }
+    
 
     /**
      * Reverse the migrations.

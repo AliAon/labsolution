@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\patients;
+use App\Http\Controllers\doctors;
+use App\Http\Controllers\tests;
+use App\Http\Controllers\expences;
+
 use Illuminate\Http\Request;
 
 class user extends Controller
@@ -38,19 +42,24 @@ class user extends Controller
     }
     
     //sample recipeint
-    public function sample_recipeint(){
+    public function sample_recipeint(Request $request,patients  $patient ){
 
-
+        $patient_status=$patient->add_patient($request->input('name'),$request->input('fname'),$request->input('age'),$request->input('gender'),$request->input('email'),$request->input('phone_number'),$request->input('report_id'),$request->input('discount'),$request->input('tests'),$request->input('doctor_ref'),
+        $request->input('CNIC'),$request->input('registor_date'),$request->input('sporrotine'),$request->input('status'),$request->input('sample_location'),$request->input('labno'));
+        return view('users.SampleRecipent');
     }
     //search patient
-    public function search_patient(Request $request){
-
-        $patient=new patients();
+    public function search_patient(Request $request,patients  $patient){
         $patient_record=$patient->by_name($request->input('byname'));
             return view('users.SearchDeues',['patients'=>$patient_record]);
          
     }
-    // Doctors
+     //search Doctors
+     public function search_doctor(Request $request,doctors $doctor){
+        $doctor_record=$doctor->by_name($request->input('byname'));
+            return view('users.Doctors',['doctors'=>$doctor_record]);
+         
+    }
 
     public function add_doctor(){
 
@@ -72,8 +81,13 @@ class user extends Controller
 
 
     }
-    //Tests
+    //search Tests
+    public function search_test(Request $request, tests $test){
 
+           $test_record=$test->by_name($request->input('byname'));
+            return view('users.Tests',['tests'=>$test_record]);
+        
+    }
     public function add_test(){
 
 
@@ -95,7 +109,14 @@ class user extends Controller
 
     }
     //expence
+ //search Tests
+ public function search_expence(Request $request,expences  $expence){
 
+   
+    $expence_record=$expence->by_name($request->input('byname'));
+        return view('users.Expence',['expences'=>$expence_record]);
+    
+}
     public function add_expence(){
 
 

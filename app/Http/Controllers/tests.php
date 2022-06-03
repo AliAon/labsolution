@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class tests extends Controller
@@ -30,4 +30,9 @@ class tests extends Controller
   
   
       }
+      public function by_name($name){
+        $test = DB::table('tests')->where('name', $name)->get();
+        return $test;
+    
+    }
 }

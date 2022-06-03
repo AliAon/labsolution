@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class expences extends Controller
@@ -33,5 +33,10 @@ class expences extends Controller
         
 
 
+    }
+    public function by_name($name){
+        $expence = DB::table('expences')->where('name', $name)->get();
+        return $expence;
+    
     }
 }

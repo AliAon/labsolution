@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\auth;
 use App\Http\Controllers\user;
+use App\Http\Controllers\doctors;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,18 +19,30 @@ use App\Http\Controllers\user;
 Route::get('/', function () {
     return view('index');
 });
+ 
+Route::controller(user::class)->group(function () {
+    Route::post('/login','login_user')->name('login');
+    Route::get('/logout_user','logout_user');
+    Route::post('/user/samplerecipent','sample_recipeint')->name('/user/samplerecipent');
+    Route::post('/user/expence','search_expence')->name('/user/expence');
+    Route::post('/user/test', 'search_test')->name('/user/test');
+    Route::post('/user/searchdeus', 'search_patient')->name('/user/searchdeus');
+    Route::post('/user/doctors', 'search_doctor')->name('/user/doctors');
+
+});
 
 
-Route::post('/login',[user::class,'login_user'])->name('login');
 
-Route::get('/logout_user',[user::class,'logout_user'])->name('/logout_user');
 
 Route::get('/user', function () {
     return view('users.UserDashboard');
 })->middleware('auth');
+
 Route::get('/user/samplerecipent', function () {
     return view('users.SampleRecipent');
 })->middleware('auth');
+
+
 Route::get('/user/viewreport', function () {
     return view('users.ViewReport');
 })->middleware('auth');
@@ -41,17 +55,14 @@ Route::get('/user/statement', function () {
 Route::get('/user/test', function () {
     return view('users.Tests');
 })->middleware('auth');
-
 Route::get('/user/searchdeus', function () {
     return view('users.SearchDeues');
 })->middleware('auth');
 
-// searchbyname
-Route::post('/user/searchdeus', [user::class,'search_patient']);
-
 Route::get('/user/doctors', function () {
     return view('users.Doctors');
 })->middleware('auth');
+
 
 //admin
 Route::get('/user/admin', function () {
