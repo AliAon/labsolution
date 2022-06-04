@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\auth;
 use App\Http\Controllers\user;
 use App\Http\Controllers\doctors;
-
+use App\Http\Controllers\DynamicPDFController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,10 +17,13 @@ use App\Http\Controllers\doctors;
 */
 
 Route::get('/', function () {
-    return view('index');
+      
+      return view('index');
 });
+// Route::get('/',[DynamicPDFController::class, 'convert']);
  
 Route::controller(user::class)->group(function () {
+
     Route::post('/login','login_user')->name('login');
     Route::get('/logout_user','logout_user');
     Route::post('/user/samplerecipent','sample_recipeint')->name('/user/samplerecipent');

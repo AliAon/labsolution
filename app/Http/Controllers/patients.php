@@ -86,6 +86,10 @@ class patients extends Controller
 
 
     }
+    public function genratereport() 
+    { 
+        
+    } 
     
 
 

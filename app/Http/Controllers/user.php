@@ -6,12 +6,15 @@ use App\Http\Controllers\patients;
 use App\Http\Controllers\doctors;
 use App\Http\Controllers\tests;
 use App\Http\Controllers\expences;
+use Dompdf\Dompdf; 
+
 
 use Illuminate\Http\Request;
 
 class user extends Controller
 {
     //
+
     public $firstname;
     public $lastname;
     public $username;
@@ -40,7 +43,6 @@ class user extends Controller
         return redirect('/');
 
     }
-    
     //sample recipeint
     public function sample_recipeint(Request $request,patients  $patient ){
 
@@ -166,7 +168,9 @@ class user extends Controller
 
 
     }
-    public function genrate_report(){
+    public function genrate_report($patient_name){
+
+
         
 
 
