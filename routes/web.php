@@ -27,6 +27,7 @@ Route::controller(user::class)->group(function () {
     Route::post('/login','login_user')->name('login');
     Route::get('/logout_user','logout_user');
     Route::post('/user/samplerecipent','sample_recipeint')->name('/user/samplerecipent');
+    Route::post('/user/samplerecipent/testlist','view_tests_list')->name('/user/samplerecipent/testlist');
     Route::post('/user/expence','search_expence')->name('/user/expence');
     Route::post('/user/test', 'search_test')->name('/user/test');
     Route::post('/user/searchdeus', 'search_patient')->name('/user/searchdeus');

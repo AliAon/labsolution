@@ -35,4 +35,9 @@ class tests extends Controller
         return $test;
     
     }
+    public function by_code($code){
+      $test = DB::table('tests')->where('test_code', $code)->get();
+      return $test;
+  
+  }
 }

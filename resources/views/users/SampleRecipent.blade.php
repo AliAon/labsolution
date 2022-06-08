@@ -100,10 +100,7 @@
                     </div>
                     
 
-                    <div class="form-group">
-                    <label for="exampleInputGender">Register Date</label>
-                    <input type="date" class="form-control form-control-user" id="exampleInputPicture" name="registor_date" aria-describedby="PictureHelp">
-                    </div>
+                  
                     
             
                      
@@ -126,23 +123,107 @@
                        
                       </select>   
                     </div>
-                    
+                    <div class="form-group">
+                        <label for="exampleInputGender">Register Date</label>
+                        <input type="date" class="form-control form-control-user" id="exampleInputPicture" name="registor_date" aria-describedby="PictureHelp">
+                        </div>
                    
                     <div class="form-group">
                     <label for="exampleInputPicture">Test Status</label>
                     <input type="text" class="form-control form-control-user" id="exampleInputPicture" name="status" aria-describedby="PictureHelp">
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputPicture">Discount</label>
-                        <select class="form-control form-control-user" id="exampleFormControlSelect1"  name="discount">
-                            <option>50%</option>
-                            <option>0%</option>
-                          </select>  
-                        </div>
+                 
                     </div>
                    </div>
-                       <hr> 
-                    <button type="submit" class="btn btn-primary">Update</button>
+
+                   
+                   
+                   <hr> 
+                   <div class="row">
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="exampleInputPicture">Test Code</label>   
+                      
+                        <input type="text" class="form-control form-control-user" id="testcode" name="test_code" aria-describedby="PictureHelp">
+                    </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="exampleInputPicture">Test Name</label>   
+                        
+                        <input type="text" class="form-control form-control-user" id="testname" name="test_name" aria-describedby="PictureHelp">
+                    </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="exampleInputPicture">Specmons </label> 
+                            <input type="text" class="form-control form-control-user" id="exampleInputPicture" name="registor_date" aria-describedby="PictureHelp">
+                        
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                        <button type="button" class="btn btn-primary" id="add_to_basket">add to basket</button>
+                        </div>
+
+                    </div>
+
+                   </div>
+                   <div class="ferch test" id="test-list">
+                    <div class="row">
+                        <div class="col-1">
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" >
+                          </div> 
+                        </div>   
+                        <div class="col-2">
+                        <div class="form-group">
+                            <label for="exampleInputPicture">Test Name</label>
+                        </div>
+                         </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label for="exampleInputPicture">Price</label>
+                            <p>1000</p>     
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label for="exampleInputPicture">Spenmons </label>   
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label for="exampleInputPicture">Duration </label>   
+                        </div>
+                    </div>
+                    </div>
+                   </div>
+{{-- 
+                   calculate --}}
+                   <div class="row">
+                       <div class="col-lg-3">
+                   <label for="exampleInputPicture">TOTAL</label><br>
+                   <label for="exampleInputPicture"> Discount</label><br>
+                   <label for="exampleInputPicture"> Paid</label><br>
+                   <label for="exampleInputPicture"> Balance</label><br>
+                       </div>
+                    <div class="col-lg-9">
+                        <input type="text" class="form-control form-control-user" id="exampleInputMR.NO" name="phone_number" aria-describedby="MR.NOHelp">
+                        <input type="text" class="form-control form-control-user" id="exampleInputMR.NO" name="phone_number" aria-describedby="MR.NOHelp">
+                        <input type="text" class="form-control form-control-user" id="exampleInputMR.NO" name="phone_number" aria-describedby="MR.NOHelp">
+                 
+                        <input type="text" class="form-control form-control-user" id="exampleInputMR.NO" name="phone_number" aria-describedby="MR.NOHelp">
+                 
+                    </div>  
+                </div>
+                   <div>
+
+
+
+                   </div>
+                    <button type="submit" class="btn btn-primary">save</button>
                 </form>
                 </section>   
             <!--       end colltion -->
@@ -196,4 +277,50 @@
         </div>
     </div>
 
+    
+  
+
+
+
+
+
     @include('users.footer')
+
+
+
+    <script>
+        
+   
+        jQuery(document).ready(function(){
+            $( "#add_to_basket" ).click(function() {
+              
+            
+            $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+            });
+            $.ajax({
+              type:'POST',
+              url:'/user/samplerecipent/testlist',
+                dataType:"json",
+                data:{
+                   "name":$("#testname").val(),
+                   "code":$("#testcode").val(),
+               },
+               success:function(data,textStatus) {
+
+                console.log(data);
+
+                
+               }
+            });
+
+
+            }); 
+        });
+               
+             </script>
+    </body>
+    
+    </html>

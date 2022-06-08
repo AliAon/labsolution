@@ -105,8 +105,23 @@ class user extends Controller
 
 
     }
-    public function view_tests_list(){
-        
+    public function view_tests_list(Request $request,tests $test){
+
+
+        if(isset($request)){
+            $test_record_code=$test->by_code($request->input('code'));
+            $test_record_name=$test->by_name($request->input('name'));
+
+            if(!count($test_record_name) == 0){
+                return $test_record_name;
+            }elseif(!count($test_record_code) == 0){
+                return $test_record_code;
+
+            }
+
+        }
+
+     
 
 
     }

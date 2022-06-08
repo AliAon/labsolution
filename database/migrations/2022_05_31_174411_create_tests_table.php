@@ -16,8 +16,11 @@ return new class extends Migration
         Schema::create('tests', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->integer('test_code');
             $table->decimal('amount');
             $table->timestamps();
+            $table->string('duration');
+
         });
     }
 
