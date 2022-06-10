@@ -139,7 +139,7 @@
                    
                    
                    <hr> 
-                   <div class="row">
+                   <div class="row" id="#mainForm">
                     <div class="col-4">
                         <div class="form-group">
                             <label for="exampleInputPicture">Test Code</label>   
@@ -161,6 +161,7 @@
                         
                         </div>
                     </div>
+                   
                     <div class="row">
                         <div class="col-lg-12">
                         <button type="button" class="btn btn-primary" id="add_to_basket">add to basket</button>
@@ -169,36 +170,19 @@
                     </div>
 
                    </div>
-                   <div class="ferch test" id="test-list">
-                    <div class="row">
-                        <div class="col-1">
+                   <hr>
+                   <div class="test-list-container">
+                       <div class="row">
+                       <div class="col-3"> Patient Name</div>
+                       <div class="col-3"> Price</div>
+                       <div class="col-3"> Specimon</div>
+                       <div class="col-3"> Duration</div>
+                       </div>
 
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" >
-                          </div> 
-                        </div>   
-                        <div class="col-2">
-                        <div class="form-group">
-                            <label for="exampleInputPicture">Test Name</label>
-                        </div>
-                         </div>
-                    <div class="col-3">
-                        <div class="form-group">
-                            <label for="exampleInputPicture">Price</label>
-                            <p>1000</p>     
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="form-group">
-                            <label for="exampleInputPicture">Spenmons </label>   
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="form-group">
-                            <label for="exampleInputPicture">Duration </label>   
-                        </div>
-                    </div>
-                    </div>
+                   <div id="test-list">
+                   </div>
+                   <button type="button" id='totalbuget' class='btn btn-primary'>Total</button>
+
                    </div>
 {{-- 
                    calculate --}}
@@ -289,7 +273,7 @@
 
 
     <script>
-        
+ 
    
         jQuery(document).ready(function(){
             $( "#add_to_basket" ).click(function() {
@@ -303,21 +287,44 @@
             $.ajax({
               type:'POST',
               url:'/user/samplerecipent/testlist',
-                dataType:"json",
                 data:{
                    "name":$("#testname").val(),
-                   "code":$("#testcode").val(),
+                   "code":$("#testcode").val()
                },
-               success:function(data,textStatus) {
+               dataType:"json",
 
-                console.log(data);
+               success:function(data,textStatus) {
+                            for( let x of data ){
+                                    var $text="<div class='row'><div class='col-1'><div class='form-check'><input class='form-check-input' type='checkbox' name='checkboxarray[]' value='"+x.id+"' id='flexCheckChecked' ></div></div><div class='col-2'><div class='form-group'>" + x.name + "</div></div><div class='col-3'><div class='form-group'><p> " + x.amount+"</p></div></div><div class='col-3'><div class='form-group'>asas</div></div><div class='col-3'><div class='form-group'>" + x.duration + "</div></div></div>";
+
+                              }
+                               $("#test-list").append($text)
+
+
+                               var testval = [];
+                                $('#totalbuget').click(function(){
+                                    $('.form-check-input').each(function() {
+                                        if($('.form-check-input').prop( "checked" )==true){
+                                            
+                                            testval.push($(this).val());
+                                       }
+
+                                    }); 
+
+                                        console.log(testval);
+                                        testval = [];
+                                })
+
+
+             
 
                 
                }
             });
 
-
             }); 
+        
+
         });
                
              </script>
