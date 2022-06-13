@@ -46,9 +46,10 @@ class user extends Controller
     //sample recipeint
     public function sample_recipeint(Request $request,patients  $patient ){
 
-        $patient_status=$patient->add_patient($request->input('name'),$request->input('fname'),$request->input('age'),$request->input('gender'),$request->input('email'),$request->input('phone_number'),$request->input('report_id'),$request->input('discount'),$request->input('tests'),$request->input('doctor_ref'),
-        $request->input('CNIC'),$request->input('registor_date'),$request->input('sporrotine'),$request->input('status'),$request->input('sample_location'),$request->input('labno'));
-        return view('users.SampleRecipent');
+     
+           $patient->add_patient($request->input('name'),$request->input('fname'),$request->input('age'),$request->input('gender'),$request->input('email'),$request->input('phone_number'),$request->input('report_id'),$request->input('discount'),$request->input('tests'),$request->input('doctor_ref'),
+            $request->input('CNIC'),$request->input('registor_date'),$request->input('sporrotine'),$request->input('status'),$request->input('sample_location'),$request->input('labno'));
+            
     }
     //search patient
     public function search_patient(Request $request,patients  $patient){

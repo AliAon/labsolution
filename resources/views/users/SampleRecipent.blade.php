@@ -31,7 +31,7 @@
                     </div>
 
             <section>
-                <form action="{{route('/user/samplerecipent')}}" method="POST">  
+                <form action="" id="form_sample" method="POST">  
                     @csrf                      
                     <div class="row">
             
@@ -39,26 +39,26 @@
             
                     <div class="form-group">
                     <label for="exampleInputPicture">Location</label>
-                    <input type="text" class="form-control form-control-user" id="exampleInputPicture" name="sample_location" aria-describedby="PictureHelp">
+                    <input type="text" class="form-control form-control-user" id="sample_location" name="sample_location" aria-describedby="PictureHelp">
                     </div>
             
                     <div class="form-group">
                     <label for="exampleInputPicture">Patient Name</label>
-                    <input type="text" name="name" class="form-control form-control-user" id="exampleInputPicture" aria-describedby="BranchHelp">
+                    <input type="text" name="name" class="form-control form-control-user" id="name" aria-describedby="BranchHelp">
                     </div>
                     <div class="form-group">
                     <label for="exampleInputEmployee">CNIC</label>
-                    <input type="text" name="CNIC" class="form-control form-control-user" id="exampleInputEmployee" aria-describedby="EmployeeHelp">
+                    <input type="text" name="CNIC" class="form-control form-control-user" id="cnic" aria-describedby="EmployeeHelp">
                     </div>
                     <div class="form-group">
                     <label for="exampleInputMR.NO">Email</label>
-                    <input type="text" name="email" class="form-control form-control-user" id="exampleInputMR.NO" aria-describedby="MR.NOHelp">
+                    <input type="text" name="email" class="form-control form-control-user" id="email" aria-describedby="MR.NOHelp">
                     </div>
                    
                     
                      <div class="form-group">
                     <label for="exampleInputPicture">Doctor</label>
-                    <select class="form-control form-control-user" id="exampleFormControlSelect1" name="doctor_ref">
+                    <select class="form-control form-control-user" id="doctor_ref" name="doctor_ref">
                         <option>Qamar</option>
                         <option>Awais</option>
                        
@@ -71,16 +71,16 @@
             
                     <div class="form-group">
                     <label for="exampleInputPicture">Lab No</label>
-                    <input type="text" class="form-control form-control-user" id="exampleInputPicture" name="labno" aria-describedby="PictureHelp">
+                    <input type="text" class="form-control form-control-user" id="labno" name="labno" aria-describedby="PictureHelp">
                     </div>
             
                     <div class="form-group">
                     <label for="exampleInputPicture">F/H Name</label>
-                    <input type="text" class="form-control form-control-user" id="exampleInputPicture" name="fname" aria-describedby="BranchHelp">
+                    <input type="text" class="form-control form-control-user" id="fname" name="fname" aria-describedby="BranchHelp">
                     </div>
                     <div class="form-group">
                     <label for="exampleInputEmployee">Gender</label>
-                    <select class="form-control form-control-user" id="exampleFormControlSelect1"  name="gender">
+                    <select class="form-control form-control-user" id="gender"  name="gender">
                         <option>Male</option>
                         <option>Female</option>
                        
@@ -88,11 +88,11 @@
                     </div>
                     <div class="form-group">
                     <label for="exampleInputMR.NO">Mobile No</label>
-                    <input type="text" class="form-control form-control-user" id="exampleInputMR.NO" name="phone_number" aria-describedby="MR.NOHelp">
+                    <input type="text" class="form-control form-control-user" id="phone_number" name="phone_number" aria-describedby="MR.NOHelp">
                     </div>
                     <div class="form-group">
                     <label for="exampleInputGender">Test Name</label>
-                    <select class="form-control form-control-user" id="exampleFormControlSelect1"  name="tests">
+                    <select class="form-control form-control-user" id="tests"  name="tests">
                         <option>CBC</option>
                         <option>CBC</option>
                        
@@ -108,16 +108,16 @@
                     <div class="col-4">
                     <div class="form-group">
                     <label for="exampleInputPicture">Report Id</label>
-                    <input type="text" class="form-control form-control-user" id="exampleInputPicture" name="report_id" aria-describedby="PictureHelp">
+                    <input type="text" class="form-control form-control-user" id="report_id" name="report_id" aria-describedby="PictureHelp">
                     </div>
             
                     <div class="form-group">
                     <label for="exampleInputPicture">Age</label>
-                    <input type="text" class="form-control form-control-user" id="exampleInputPicture" name="age" aria-describedby="BranchHelp">
+                    <input type="text" class="form-control form-control-user" id="age" name="age" aria-describedby="BranchHelp">
                     </div>
                     <div class="form-group">
                     <label for="exampleInputEmployee">Special or Routine</label>
-                    <select class="form-control form-control-user" id="exampleFormControlSelect1"  name="sporrotine">
+                    <select class="form-control form-control-user" id="sporrotine"  name="sporrotine">
                         <option>Special</option>
                         <option>Routine</option>
                        
@@ -125,12 +125,12 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputGender">Register Date</label>
-                        <input type="date" class="form-control form-control-user" id="exampleInputPicture" name="registor_date" aria-describedby="PictureHelp">
+                        <input type="date" class="form-control form-control-user" id="registor_date" name="registor_date" aria-describedby="PictureHelp">
                         </div>
                    
                     <div class="form-group">
                     <label for="exampleInputPicture">Test Status</label>
-                    <input type="text" class="form-control form-control-user" id="exampleInputPicture" name="status" aria-describedby="PictureHelp">
+                    <input type="text" class="form-control form-control-user" id="status" name="status" aria-describedby="PictureHelp">
                     </div>
                  
                     </div>
@@ -157,7 +157,7 @@
                     <div class="col-4">
                         <div class="form-group">
                             <label for="exampleInputPicture">Specmons </label> 
-                            <input type="text" class="form-control form-control-user" id="exampleInputPicture" name="registor_date" aria-describedby="PictureHelp">
+                            <input type="text" class="form-control form-control-user" id="exampleInputPicture" name="Specmons" aria-describedby="PictureHelp">
                         
                         </div>
                     </div>
@@ -193,40 +193,44 @@
                    <div class="row">
                        <div class="col-lg-3">
                    <label for="exampleInputPicture">TOTAL</label><br>
+                   <hr>
                    <label for="exampleInputPicture"> Discount</label><br>
+                   <label for="exampleInputPicture"> Less</label><br>
                    <label for="exampleInputPicture"> Paid</label><br>
+
                        </div>
                     <div class="col-lg-4">
                         <p id="total_amount"></p>
-                        <div class="row pt-2" >
+                        <div class="row pt-4" >
                             <div class="col-lg-8 pr-0">
-                            <input type="text" width="100%" class="form-control form-control-user" id="discountvalue" name="phone_number" aria-describedby="MR.NOHelp">
+                            <input type="text" width="100%" class="form-control form-control-user" id="discountvalue" name="discountvalue" aria-describedby="MR.NOHelp">
                                 </div>
                                 <div class="col-lg-4">
                             <button type="button" width="100%" id='calculatediscount' class='btn btn-primary'>calculate</button>
                                 </div>  
                        </div>
-
+                       <div class="row pt-2" >
+                        <div class="col-lg-8 pr-0">
+                        <input type="text" width="100%" class="form-control form-control-user" id="lessvalue" name="lessvalue" aria-describedby="MR.NOHelp">
+                            </div>
+                            <div class="col-lg-4">
+                        <button type="button" width="100%" id='calculateless' class='btn btn-primary'>calculate</button>
+                            </div>  
+                   </div> 
                        <div class="row pt-2 " >
                         <div class="col-lg-8 pr-0">
-                        <input type="text" width="100%" class="form-control form-control-user" id="paidvalue" name="phone_number" aria-describedby="MR.NOHelp">
+                        <input type="text" width="100%" class="form-control form-control-user" id="paidvalue" name="paidvalue" aria-describedby="MR.NOHelp">
                             </div>
                             <div class="col-lg-4">
                         <button type="button" width="100%" id='calculatebalance' class='btn btn-primary'>calculate</button>
                             </div>  
                       </div>
-                      {{-- <div class="row pt-2" >
-                        <div class="col-lg-8 pr-0">
-                        <input type="text" width="100%" class="form-control form-control-user" id="discountvalue" name="phone_number" aria-describedby="MR.NOHelp">
-                            </div>
-                            <div class="col-lg-4">
-                        <button type="button" width="100%" id='discount' class='btn btn-primary'>calculate</button>
-                            </div>  
-                   </div>                  --}}
+                                    
                     </div>  
                     <div class="col-lg-3">
-                        <label for="exampleInputPicture" >Total After Discount</label><br>
+                        <label for="exampleInputPicture" >Total After Discount</label><br><hr>
                         <label for="exampleInputPicture" style="margin-bottom: 0.7rem;"> Discount</label><br>
+                        <label for="exampleInputPicture" style="margin-bottom: 0.7rem;"> Less</label><br>
                         <label for="exampleInputPicture" style="margin-bottom: 0.7rem;"> Paid</label><br>
                         <label for="exampleInputPicture" style="margin-bottom: 0.7rem;"> Balance</label><br>
 
@@ -235,6 +239,7 @@
                             <div class="col-lg-2"> 
                                 <p id="totalafterdiscount"> </p>
                                 <p id="discountvaluetext"> </p>
+                                <p id="lessvaluetext"> </p>
                                 <p id="paidvaluetext"> </p>
                                 <p id="balancevaluetext"> </p>
 
@@ -249,7 +254,7 @@
 
 
                    </div>
-                    <button type="submit" class="btn btn-primary">save</button>
+                    <button type="submit" id="submit" class="btn btn-primary">save</button>
                 </form>
                 </section>   
             <!--       end colltion -->
@@ -318,11 +323,15 @@
  
    
         jQuery(document).ready(function(){
+
+            
             var total;
             let discount;
             let net;
+            let paid;
             var subtotal;
             let balance;
+            let sample_recient;
              $( "#add_to_basket" ).click(function() {
               
             
@@ -354,10 +363,7 @@
 
             });
             
-                  //click all
-    
-                        
-                        
+                  //click all    
                   $('#all').click(function(){
                                     
                                     if($(this).is(":checked")){
@@ -431,6 +437,67 @@
 
                     }
                     $('#calculatebalance').click(calculatebalance)
+
+
+                    //calculate less
+                    function calculateless() {
+                        less     = $('#lessvalue').val()
+                        total  = total - less;
+                        $('#lessvaluetext').text(less);
+
+                    }
+                    $('#calculateless').click(calculateless)
+
+
+                    //sample recient
+
+                        $( "#submit" ).click(function(e) {
+                            e.preventDefault()
+                           $.ajax({
+                            type:'POST',
+                            url:'/user/samplerecipent',
+                                data:{
+                                "sample_location":$('#sample_location').val(),
+                                "name":$('#name').val(),
+                                "CNIC":$('#cnic').val(),
+                                "email":$('#email').val(),
+                                "doctor_ref":$('#doctor_ref').val(),
+                                "labno":$('#labno').val(),
+                                "fname":$('#fname').val(),
+                                "gender":$('#gender').val(),
+                                "phone_number":$('#phone_number').val(),
+                                "tests":$('#tests').val(),
+                                "report_id":$('#report_id').val(),
+                                "age":$('#age').val(),
+                                "sporrotine":$('#sporrotine').val(),
+                                "registor_date":$('#registor_date').val(),
+                                "status":$('#status').val(),
+                                "discount":discount,
+                                "total":total,
+                                "paid":paid,
+                                "less":less,
+                                "balance":balance,
+                                
+                                
+                            },
+                            dataType:"json",
+
+                             success:function(data,textStatus) {
+                              
+
+                                }
+                            });
+                            location.reload();
+                        });
+
+
+
+
+
+
+
+
+
 
 
 
