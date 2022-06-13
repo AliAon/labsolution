@@ -173,17 +173,21 @@
                    <hr>
                    <div class="test-list-container">
                        <div class="row">
-                       <div class="col-3"> Patient Name</div>
+                        <div class="col-1"><input id='all' type="checkbox"></div>
+
+                       <div class="col-2"> Patient Name</div>
                        <div class="col-3"> Price</div>
                        <div class="col-3"> Specimon</div>
                        <div class="col-3"> Duration</div>
                        </div>
+                       <hr>
 
                    <div id="test-list">
                    </div>
                    <button type="button" id='totalbuget' class='btn btn-primary'>Total</button>
 
                    </div>
+                   <hr>
 {{-- 
                    calculate --}}
                    <div class="row">
@@ -191,16 +195,54 @@
                    <label for="exampleInputPicture">TOTAL</label><br>
                    <label for="exampleInputPicture"> Discount</label><br>
                    <label for="exampleInputPicture"> Paid</label><br>
-                   <label for="exampleInputPicture"> Balance</label><br>
                        </div>
-                    <div class="col-lg-9">
-                        <input type="text" class="form-control form-control-user" id="exampleInputMR.NO" name="phone_number" aria-describedby="MR.NOHelp">
-                        <input type="text" class="form-control form-control-user" id="exampleInputMR.NO" name="phone_number" aria-describedby="MR.NOHelp">
-                        <input type="text" class="form-control form-control-user" id="exampleInputMR.NO" name="phone_number" aria-describedby="MR.NOHelp">
-                 
-                        <input type="text" class="form-control form-control-user" id="exampleInputMR.NO" name="phone_number" aria-describedby="MR.NOHelp">
-                 
+                    <div class="col-lg-4">
+                        <p id="total_amount"></p>
+                        <div class="row pt-2" >
+                            <div class="col-lg-8 pr-0">
+                            <input type="text" width="100%" class="form-control form-control-user" id="discountvalue" name="phone_number" aria-describedby="MR.NOHelp">
+                                </div>
+                                <div class="col-lg-4">
+                            <button type="button" width="100%" id='calculatediscount' class='btn btn-primary'>calculate</button>
+                                </div>  
+                       </div>
+
+                       <div class="row pt-2 " >
+                        <div class="col-lg-8 pr-0">
+                        <input type="text" width="100%" class="form-control form-control-user" id="paidvalue" name="phone_number" aria-describedby="MR.NOHelp">
+                            </div>
+                            <div class="col-lg-4">
+                        <button type="button" width="100%" id='calculatebalance' class='btn btn-primary'>calculate</button>
+                            </div>  
+                      </div>
+                      {{-- <div class="row pt-2" >
+                        <div class="col-lg-8 pr-0">
+                        <input type="text" width="100%" class="form-control form-control-user" id="discountvalue" name="phone_number" aria-describedby="MR.NOHelp">
+                            </div>
+                            <div class="col-lg-4">
+                        <button type="button" width="100%" id='discount' class='btn btn-primary'>calculate</button>
+                            </div>  
+                   </div>                  --}}
                     </div>  
+                    <div class="col-lg-3">
+                        <label for="exampleInputPicture" >Total After Discount</label><br>
+                        <label for="exampleInputPicture" style="margin-bottom: 0.7rem;"> Discount</label><br>
+                        <label for="exampleInputPicture" style="margin-bottom: 0.7rem;"> Paid</label><br>
+                        <label for="exampleInputPicture" style="margin-bottom: 0.7rem;"> Balance</label><br>
+
+                            </div>
+
+                            <div class="col-lg-2"> 
+                                <p id="totalafterdiscount"> </p>
+                                <p id="discountvaluetext"> </p>
+                                <p id="paidvaluetext"> </p>
+                                <p id="balancevaluetext"> </p>
+
+
+
+
+
+                            </div>
                 </div>
                    <div>
 
@@ -276,7 +318,12 @@
  
    
         jQuery(document).ready(function(){
-            $( "#add_to_basket" ).click(function() {
+            var total;
+            let discount;
+            let net;
+            var subtotal;
+            let balance;
+             $( "#add_to_basket" ).click(function() {
               
             
             $.ajaxSetup({
@@ -295,35 +342,99 @@
 
                success:function(data,textStatus) {
                             for( let x of data ){
-                                    var $text="<div class='row'><div class='col-1'><div class='form-check'><input class='form-check-input' type='checkbox' name='checkboxarray[]' value='"+x.id+"' id='flexCheckChecked' ></div></div><div class='col-2'><div class='form-group'>" + x.name + "</div></div><div class='col-3'><div class='form-group'><p> " + x.amount+"</p></div></div><div class='col-3'><div class='form-group'>asas</div></div><div class='col-3'><div class='form-group'>" + x.duration + "</div></div></div>";
+                                    var $text="<div class='row'><div class='col-1'><div class='form-check'><input class='checkboxes' type='checkbox'  value='"+x.id+"' id='flexCheckChecked' ></div></div><div class='col-2'><div class='form-group'>" + x.name + "</div></div><div class='col-3'><div class='form-group'><p> " + x.amount+"</p></div></div><div class='col-3'><div class='form-group'>asas</div></div><div class='col-3'><div class='form-group'>" + x.duration + "</div></div></div>";
 
                               }
                                $("#test-list").append($text)
-
-
-                               var testval = [];
-                                $('#totalbuget').click(function(){
-                                    $('.form-check-input').each(function() {
-                                        if($('.form-check-input').prop( "checked" )==true){
-                                            
-                                            testval.push($(this).val());
-                                       }
-
-                                    }); 
-
-                                        console.log(testval);
-                                        testval = [];
-                                })
-
-
-             
-
+        
                 
                }
             });
+                 
 
-            }); 
-        
+            });
+            
+                  //click all
+    
+                        
+                        
+                  $('#all').click(function(){
+                                    
+                                    if($(this).is(":checked")){
+                                    $('.checkboxes').each(function(){
+                                        
+                                        
+                                    $(this).prop( "checked", true );  
+                                    })    
+                                        
+                                    }else{
+                                        $('.checkboxes').each(function(){
+                                    $(this).prop( "checked", false );
+                                    
+                                    })    
+                                                    
+                                }
+                                    
+                                });
+                        //get total
+
+                                $('#totalbuget').click(function(){
+
+
+
+                                    var arr=[]
+
+                                    $('.checkboxes').each(function(){
+
+                                if($(this).is(":checked")){
+                                        arr.push($(this).val())
+                                    
+                                    }
+                                
+                                })
+                                    //post
+                                    $.ajax({
+                                    type:'post',
+                                    url:'/user/samplerecipent/testlisttotal',
+
+                                        data:{arr:arr},
+                                    dataType:"json",
+
+                                    success:function(data,textStatus) {
+                                      subtotal=data;
+                                    $('#total_amount').text(data) 
+                                    }
+                                    });
+                                   // console.log(subtotal);      
+                            
+                         });
+
+                         //calculatediscount
+                        function calculatediscount() {
+
+                         discount            =  $('#discountvalue').val();
+                         percentagediscount = discount / 100;
+                         total              = subtotal - (subtotal * percentagediscount)
+                        $('#totalafterdiscount').text(total);
+                        $('#discountvaluetext').text(discount+'%');
+
+                    }
+
+                    //calculatebalance
+                    $('#calculatediscount').click(calculatediscount)
+
+                    function calculatebalance() {
+                        paid     = $('#paidvalue').val()
+                        balance  = total - paid;
+                        $('#balancevaluetext').text(balance);
+                        $('#paidvaluetext').text(paid);
+
+                    }
+                    $('#calculatebalance').click(calculatebalance)
+
+
+
+                    
 
         });
                

@@ -28,6 +28,8 @@ Route::controller(user::class)->group(function () {
     Route::get('/logout_user','logout_user');
     Route::post('/user/samplerecipent','sample_recipeint')->name('/user/samplerecipent');
     Route::post('/user/samplerecipent/testlist','view_tests_list')->name('/user/samplerecipent/testlist');
+    Route::post('/user/samplerecipent/testlisttotal','testlisttotal')->name('/user/samplerecipent/testlisttotal');
+
     Route::post('/user/expence','search_expence')->name('/user/expence');
     Route::post('/user/test', 'search_test')->name('/user/test');
     Route::post('/user/searchdeus', 'search_patient')->name('/user/searchdeus');

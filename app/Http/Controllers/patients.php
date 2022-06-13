@@ -78,6 +78,13 @@ class patients extends Controller
         return $patient;
     
     }
+    public function totalprice($id){
+        $amount = DB::table('tests')->where('id', $id)->value('amount');
+        return $amount;
+    
+    }
+    
+
     public function by_phone_number(){
 
 

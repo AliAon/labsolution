@@ -125,6 +125,17 @@ class user extends Controller
 
 
     }
+
+    public function testlisttotal(Request $request,patients  $patient ){
+
+        $total=0;
+        $arrvalues=$request->input('arr');
+        foreach ($arrvalues as $val) {
+            $total+=$patient->totalprice($val);
+        }
+        return $total;
+      
+    }
     //expence
  //search Tests
  public function search_expence(Request $request,expences  $expence){
