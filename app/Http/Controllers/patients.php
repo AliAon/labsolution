@@ -29,7 +29,7 @@ class patients extends Controller
     //add patient
     public function add_patient($name,$fname,$age,$gender,$email,$phone_number,$report_id,$discount,$tests,$doctor_ref,
     $CNIC,$registor_date,$spcialorroutine,$status,$sample_location,$labno){
-        $record=DB::table('patients')->insert([
+        $record=DB::table('patients')->insertGetId([
             'name'         => $name,
             'f_name'       => $fname,
             'age'          => $age,
@@ -47,7 +47,7 @@ class patients extends Controller
             'registor_date'=> $registor_date
         ]);
         if($record){
-            return 'updated record';
+            return $record;
         }
 
 
@@ -91,7 +91,21 @@ class patients extends Controller
     }
     public function by_report_id(){
 
+    }
+    public function genratevoucher($patient_id,$full_amount,$net,$paid,$balance,$discount,$lab_id)
+    { 
+        $record=DB::table('voucher')->insert([
+            'patient_id'        => $patient_id,
+            'full_amount'       => $full_amount,
+            'net'               => $net,
+            'paid'              => $paid,
+            'balance'           => $balance,
+            'discount'          => $discount,
+            'lab_id'            => $lab_id,
+        ]);
 
+
+        
     }
     public function genratereport() 
     { 
