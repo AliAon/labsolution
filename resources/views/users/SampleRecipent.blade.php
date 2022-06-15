@@ -473,6 +473,7 @@
                                 "registor_date":$('#registor_date').val(),
                                 "status":$('#status').val(),
                                 "discount":discount,
+                                "subtotal":subtotal,
                                 "total":total,
                                 "paid":paid,
                                 "less":less,
@@ -487,7 +488,7 @@
 
                                 }
                             });
-                            location.reload();
+                           // location.reload();
                         });
 
 
