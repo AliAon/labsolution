@@ -47,8 +47,9 @@ class user extends Controller
     public function sample_recipeint(Request $request,patients  $patient ){
 
      
-           $patient->add_patient($request->input('name'),$request->input('fname'),$request->input('age'),$request->input('gender'),$request->input('email'),$request->input('phone_number'),$request->input('report_id'),$request->input('discount'),$request->input('tests'),$request->input('doctor_ref'),
+            $patient_id=$patient->add_patient($request->input('name'),$request->input('fname'),$request->input('age'),$request->input('gender'),$request->input('email'),$request->input('phone_number'),$request->input('report_id'),$request->input('discount'),$request->input('tests'),$request->input('doctor_ref'),
             $request->input('CNIC'),$request->input('registor_date'),$request->input('sporrotine'),$request->input('status'),$request->input('sample_location'),$request->input('labno'));
+            $patient->genratevoucher($patient_id,$request->input('subtotal'),$request->input('total'),$request->input('paid'),$request->input('balance'),$request->input('discount'),$request->input('labno'));
             
     }
     //search patient
@@ -195,7 +196,12 @@ class user extends Controller
 
 
     }
-    public function genrate_report($patient_name){
+    public function genratevoucher(Request $request,patients  $patient){
+
+
+
+
+
 
 
         
